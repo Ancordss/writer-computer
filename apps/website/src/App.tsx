@@ -5,7 +5,7 @@ const FEATURES = [
   { label: "Blazing fast", description: "cold starts takes a fraction of a second" },
   { label: "Extended markdown", description: "mermaid charts, tables and HTML" },
   { label: "Multiwindow", description: "snappy switch between multiple workspaces" },
-  { label: "Lightweight", description: "small binary size <10mb" },
+  { label: "Frontmatter", description: "YAML metadata support built-in" },
 ];
 
 const SCREENSHOTS = [
@@ -24,7 +24,12 @@ export function App() {
             <span className="brand-rule" aria-hidden="true" />
           </a>
           <nav className="site-nav">
-            <a className="pill pill-ghost" href={__WRITER_RELEASES_URL__}>
+            <a
+              className="pill pill-ghost"
+              href="https://x.com/joelbqz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Updates
             </a>
             <a
