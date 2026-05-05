@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-05-05
+
+- Add inline markdown data charts in the editor. Writer now renders explicit `chart` fenced blocks from note-local markdown tables or frontmatter as bar, line, and pie charts, keeps the raw markdown as the source of truth, updates the preview when the note data changes, and shows inline chart errors when config or source data is invalid.
+
 ## 2026-05-04
 
 - Update the app icon.

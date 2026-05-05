@@ -36,6 +36,7 @@ import {
 import { tableDecorations } from "./table-decorations";
 import { htmlBlockDecorations, htmlBlockParserExtension } from "./html-block-decorations";
 import { mermaidDecorations } from "./mermaid-decorations";
+import { chartDecorations } from "./chart-decorations";
 import { imageSrcResolver } from "./image-src-resolver";
 import { wikiLinkExtension } from "./wiki-link-extension";
 import {
@@ -53,6 +54,7 @@ import { useReloadVersion } from "@/hooks/use-tabs";
 import { getWorkspaceRoot } from "@/hooks/workspace-api";
 import { parseDocument, parseFrontmatter } from "@/lib/frontmatter";
 import { resolveLinkTarget } from "@/lib/paths";
+import { serializeDocument } from "@/lib/frontmatter";
 import { logTimeline, mark } from "@/lib/startup-metrics";
 import * as tauri from "@/lib/tauri";
 
@@ -427,6 +429,10 @@ function createEditorExtensions(
     tableDecorations(),
     htmlBlockDecorations(),
     mermaidDecorations(),
+    chartDecorations((body) => {
+      const file = editorApi.getOpenFile(getFilePath());
+      return file ? serializeDocument(file.frontmatter, body) : body;
+    }),
     imageSrcResolver(getFilePath),
     wikiLinkExtension(getFilePath, isDisposed),
     markdownFormatting,
